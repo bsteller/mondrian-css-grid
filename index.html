@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+	    <title>Mondrian using CSS Grid</title>
+	    <style>
+			body,html{height:100%}
+			body{font-size:0.875em;margin:0;padding:2em;background-color:#fff;font-family:arial;}
+			.mondrian {float:left;margin:0 0 0 2em;width:325px;text-align:center;}
+			.mondrian img {width:250px;height:249px;}
+			.frame{margin-bottom:1em;padding:10px;background-color:#b7c1ca;width:800px;height:830px;float:left;}
+			.wrapper{display:grid;grid-template-columns:repeat(auto-fill,10px);grid-template-rows:repeat(auto-fill,10px);background-color:#000;width:800px;height:830px;margin:0 auto}
+			.blue{background-color:#b6ced8}
+			.white{background-color:#d7dfdd}
+			.yellow{background-color:#f7c846}
+			.red{background-color:red}
+			.black{background-color:#040404}
+			.navy{background-color:blue}
+			.cap1{grid-column:1 / 3;grid-row:6 / 8}
+			.cap2{grid-column:18 / 20;grid-row:1 / 3}
+			.cap3{grid-column:52 / 54;grid-row:1 / 2}
+			.cap4{grid-column:76 / 78;grid-row:1 / 3}
+			.cap5{grid-column:76 / 78;grid-row:83 / 84}
+			.cap6{grid-column:33 / 35;grid-row:83 / 84}
+			.cap7{grid-column:9 / 11;grid-row:82 / 84}
+			.cap8{grid-column:1 / 3;grid-row:62 / 64}
+			.cap9{grid-column:1 / 3;grid-row:27 / 29}
+			.row1box1{grid-column:1 / 18;grid-row:1 / 6}
+			.row1box2{grid-column:20 / 52;grid-row:1 / 6}
+			.row1box3{grid-column:54 / 76;grid-row:1 / 6}
+			.row1box4{grid-column:78 / 84;grid-row:1 / 62}
+			.row2box1{grid-column:1 / 9;grid-row:8 / 27}
+			.row2box2{grid-column:11 / 52;grid-row:8 / 50}
+			.row2box3{grid-column:54 / 76;grid-row:8 / 27}
+			.row3box1{grid-column:1 / 9;grid-row:29 / 62}
+			.row3box2{grid-column:54 / 64;grid-row:29 / 50}
+			.row3box3{grid-column:66 / 76;grid-row:29 / 50}
+			.row4box1{grid-column:11 / 21;grid-row:52 / 62}
+			.row4box2{grid-column:23 / 33;grid-row:52 / 62}
+			.row4box3{grid-column:35 / 52;grid-row:52 / 62}
+			.row4box4{grid-column:54 / 76;grid-row:52 / 62}
+			.row5box0{grid-column:1 / 9;grid-row:64 / 84}
+			.row5box1{grid-column:11 / 21;grid-row:64 / 74}
+			.row5box2{grid-column:23 / 33;grid-row:64 / 74}
+			.row5box3{grid-column:35 / 52;grid-row:64 / 74}
+			.row5box4{grid-column:54 / 76;grid-row:64 / 80}
+			.row5box5{grid-column:78 / 84;grid-row:64 / 84}
+			.row6box1{grid-column:11 / 33;grid-row:76 / 84}
+			.row6box2{grid-column:35 / 52;grid-row:76 / 80}
+			.row6box3{grid-column:35 / 76;grid-row:82 / 84}
+			#gridsupport {display: none;}
+			p {line-height: 1.4;}
+	    </style>
+	</head>
+	<body>
+	    <div class="frame">
+		    <div class="wrapper">
+		        <div class="blue row1box1"></div>
+		        <div class="white row1box2"></div>
+		        <div class="yellow row1box3"></div>
+		        <div class="blue row1box4"></div>
+
+		        <div class="white row2box1"></div>
+		        <div class="red row2box2"></div>
+		        <div class="yellow row2box3"></div>
+
+		        <div class="blue row3box1"></div>
+		        <div class="white row3box2"></div>
+		        <div class="white row3box3"></div>
+
+		        <div class="black row4box1"></div>
+		        <div class="black row4box2"></div>
+		        <div class="blue row4box3"></div>
+		        <div class="white row4box4"></div>
+
+		        <div class="yellow row5box0"></div>
+		        <div class="black row5box1"></div>
+		        <div class="black row5box2"></div>
+		        <div class="blue row5box3"></div>
+		        <div class="navy row5box4"></div>
+		        <div class="red row5box5"></div>
+
+		        <div class="white row6box1"></div>
+		        <div class="black row6box2"></div>
+		        <div class="white row6box3"></div>
+
+		        <div class="white cap1"></div>
+		        <div class="white cap2"></div>
+		        <div class="yellow cap3"></div>
+		        <div class="yellow cap4"></div>
+		        <div class="red cap5"></div>
+		        <div class="white cap6"></div>
+		        <div class="yellow cap7"></div>
+		        <div class="yellow cap8"></div>
+		        <div class="white cap9"></div>
+		    </div><!-- end wrapper -->
+	    </div><!-- end frame -->
+	    <div class="mondrian">
+	    	<img src="mondrian.gif" alt="Composition with Large Red Plane, Yellow, Black, Gray, and Blue, 1921">
+	    	<p>Piet Mondrian<br>Composition with Large Red Plane, Yellow, Black, Gray, and Blue, 1921. <br>Implemented in CSS Grid.</p>
+	    	<p id="gridsupport">Not seeing anything special? It may be because your browser does not support CSS grid.</p>
+	    </div>
+	    <script>
+			var wrap = document.querySelector('.wrapper');
+			if (wrap.style.grid == undefined) {document.getElementById('gridsupport').style.display = 'block';}
+	    </script>
+	</body>
+</html>
